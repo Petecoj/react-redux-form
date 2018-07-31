@@ -7,8 +7,8 @@ import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 
-const reducer = (state = 0,action) =>{
-   if (action.type='ADD_SNACK'){
+const snackReducer = (state=[],action) =>{
+   if (action.type === 'ADD_SNACK'){
        return [...state, action.payload]
    }
     
@@ -17,7 +17,7 @@ const reducer = (state = 0,action) =>{
 
 const storeInstance = createStore(
     combineReducers({
-        reducer
+        snackReducer
 
     }),
     applyMiddleware(logger)
